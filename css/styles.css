@@ -1,0 +1,190 @@
+ body { color: #111; width: 300px; height: 100px;}
+ @font-face{
+ 	font-family: 'time';
+ 	src:url('../fonts/Ubuntu-L.ttf') format('truetype');
+ }
+ .drag {
+    -webkit-app-region: drag;
+ }
+ .no-drag {
+    -webkit-app-region: no-drag;
+ }
+ .ctrl{
+ 	display: none;
+ }
+ .dragbtn1{
+ 	color: #333;
+ 	position: absolute;
+ 	left: 0px;
+ 	top: 0px;
+ 	z-index: 10;
+ }
+ .dragbtn2{
+ 	color: #333;
+ 	position: absolute;
+ 	left: 0px;
+ 	bottom: 0px;
+ 	z-index: 10;
+ } 
+ #alarmIcon{
+ 	display: none;
+ 	font-size: 18px;
+ }
+ .dragbtn1 > span, .dragbtn2 > span {
+ 	width: 16px;
+ 	height: 16px;
+ 	float: left;
+ 	padding: 2px;
+ }
+ .dragbtn1 .drag{ 	
+ 	background-image: url('../images/drag-icon.png');
+ 	background-repeat: no-repeat;
+ 	background-position: center;
+ }
+ .dragbtn2 #ontop{
+ 	background-image: url('../images/pin.png');
+ 	background-repeat: no-repeat;
+ 	background-position: center;
+ }
+ #closebtn{
+ 	color: rgba(255,255,255,0.1);
+ }
+ .alarmbtn{
+ 	width: 26px;
+ 	height: 26px;
+ 	background-color: #5cb85c !important;
+ 	padding: 4px;
+ 	position: absolute;
+ 	right: 0px;
+ 	top: 0px;
+ 	color: #fff;
+ 	line-height: 1;
+ 	z-index: 10;
+ }
+.extrabtn{
+	width: 42px;
+	height: 92px;
+ 	display: none;
+ 	font-size: 20px;
+ }
+ .extrabtnmain{
+ 	padding: 12px;
+ 	width: 44px;
+ 	float: left;
+ }
+
+ /* Home page */
+ .clockbox{
+ 	text-align: center;
+ 	padding: 12px 0px;
+ 	margin: 0px !important;
+ 	line-height: 1;
+ }
+.clockface{
+	width: auto;
+	margin: 0px;
+	display: block;
+	font-family: time;
+	color: #fff;
+	font-size:45px;	
+	padding-top: 7px;
+}
+.clockface > span{
+	margin: 0px;
+	padding: 0px;
+}
+.clockface > small{
+	font-size: 30px;
+}
+.dateface{
+	margin: 0px auto 0px auto;
+	display: block;
+	color: #666;
+	font-size: 12px;
+	letter-spacing: 3px;
+}
+.clockface small{
+	color: #666;
+}
+
+/* Overlay pages */
+.overlay{
+	width: 300px;
+	height: 100px;
+	position: absolute;
+	bottom: -100px;
+	background-color: #111;
+	color: #fff;
+	z-index: 20;
+}
+.overbox{
+	height: 100px;
+	width: 100%;
+	padding: 15px;
+	float: left;
+}
+.alarmringbox{
+	z-index: 1000!important;
+}
+.boxwithbtn{
+	width: 200px;
+	height: 63px;
+	float: left;
+}
+.boxwithbtn table{
+	margin-top: 4px;
+}
+.btn-pic{
+	margin: 0px;
+	padding: 0px 10px;
+	border:none;
+	background-color: transparent;
+}
+.time-pic{
+	font-size: 14pt;
+}
+.btn-alarm{
+	height: 100px;
+	width: 50px;
+	border: none;
+	text-align: center;
+	margin-top: -15px;
+	margin-bottom: -15px;
+	font-size: 12px;
+}
+.btn-alarm-big{
+	height: 100px;
+	width: 100px;
+	border: none;
+	text-align: center;
+	margin-top: -15px;
+	margin-bottom: -15px;
+	font-size: 12px;
+}
+.btn-alarm-half-top{
+	height: 50px;
+	width: 100px;	
+	border: none;
+	text-align: center;
+	margin-top: -15px;
+	font-size: 12px;
+}
+.btn-alarm-half-bottom{
+	height: 50px;
+	width: 100px;
+	border: none;
+	text-align: center;
+	margin-bottom: -15px;
+	font-size: 12px;
+}
+.btn-right{
+	margin-right: -15px;
+	float: right;
+}
+.btn-left{
+	margin-left: -15px;
+	float: left;
+}
+.audio{
+	display: none;
+}

@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<title>Clock</title>
+	<link rel="stylesheet" type="text/css" href="css/magic-bootstrap.css" >	
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script src="../js/jquery-2.1.1.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/alarm.js"></script>
+</head>
+<body>	
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="clockbox" id="clock">		
+					<div class="clockface" ><span id="hour">00</span><small>:</small><sman id="min">00</sman><small>:<span id="sec">00</span><span id="key">PM</span> <span class="glyphicon glyphicon-bell" id="alarmIcon" title="silent mode"></span></small></div>
+					<div class="dateface"><span id="day">Monday</span>, <span id="date">22</span> <span id="month">Dec</span>, <span id="year">2014</span></span></div>
+				</div>
+			</div>			
+		</div>
+	</div>	
+	<div class="overlay" id="alarmbox">		
+		<div class="overbox text-center">						
+			<div class="boxwithbtn btn-left">
+				<table width="100%" align="center">
+					<tr>
+						<td><button class="btn-pic" id="hup"><span class="glyphicon glyphicon-chevron-up"></span></button></td>
+						<td class="sep"></td>
+						<td><button class="btn-pic" id="mup"><span class="glyphicon glyphicon-chevron-up"></span></button></td>
+						<td class="sep"></td>
+						<td><button class="btn-pic" id="kup"><span class="glyphicon glyphicon-chevron-up"></span></button></td>
+					</tr>
+					<tr class="time-pic">
+						<td id="hv">12</td>
+						<td class="sep">:</td>
+						<td id="mv">00</td>
+						<td class="sep"></td>
+						<td id="kv">AM</td>
+					</tr>
+					<tr>
+						<td><button class="btn-pic" id="hdn"><span class="glyphicon glyphicon-chevron-down"></span></button></td>
+						<td class="sep"></td>
+						<td><button class="btn-pic" id="mdn"><span class="glyphicon glyphicon-chevron-down"></span></button></td>
+						<td class="sep"></td>
+						<td><button class="btn-pic" id="kdn"><span class="glyphicon glyphicon-chevron-down"></span></button></td>
+					</tr>
+				</table>
+				<input type="hidden" name="country" value="12:00 AM" id="time-picked">
+			</div>
+			<button class="btn-danger btn-alarm-half-top btn-right close1" title="Cancel"><span class="glyphicon glyphicon-remove"></span></button>
+			<button class="btn-success btn-alarm-half-bottom btn-right" title="Save" id="savealarm"><span class="glyphicon glyphicon-ok"></span></button>
+		</div>
+	</div>
+
+	<div class="overlay" id="alarmringbox">
+		<div class="overbox text-center">			
+			<div class="boxwithbtn btn-left">
+				<h1>Alarm!!</h1>
+			</div>			
+			<button class="btn-warning btn-alarm-half-top btn-right" title="snooze" id="snooze">
+				<span class="glyphicon glyphicon-repeat"></span>
+			</button>
+			<button class="btn-success btn-alarm-half-bottom btn-right" title="ok" id="dismiss">
+				<span class="glyphicon glyphicon-ok"></span>
+			</button>						
+		</div>
+	</div>
+
+	<div class="overlay" id="settingbox">
+		<div class="overbox text-center">			
+			<div class="boxwithbtn btn-left">
+				<h4>About</h4>
+				<p>This a simple alarm clock by <a href="https://plus.google.com/+PankajKumarChaukikar/" target="_blank">pank</a></p>
+			</div>			
+			<button class="btn-danger btn-alarm-half-top btn-right close1" title="Close"><span class="glyphicon glyphicon-remove"></span></button>
+			<button class="btn-success btn-alarm-half-bottom btn-right" title="Save"><span class="glyphicon glyphicon-ok"></span></button>					
+		</div>	
+	</div>	
+
+	<div class="alarmbtn ctrl" id="zoombtn">						
+		<span class="glyphicon glyphicon-chevron-left" id="btn0"></span>
+		<div class="extrabtn">
+			<span class="glyphicon glyphicon-bell extrabtnmain" id="alarmbtnmain" title="Add an Alarm"></span><span class="glyphicon glyphicon-cog extrabtnmain" id="settings" title="Settings"></span>		
+		</div>
+	</div>	
+	<div class="dragbtn1 ctrl">
+		<span title="Move" class="drag"></span>
+	</div>	
+	<div class="dragbtn2 ctrl">
+		<span title="close" class="glyphicon glyphicon-remove" id="closebtn"></span>
+		<!--<span title="Always on Top" id="ontop"></span>-->
+	</div>
+	<audio loop class="audio" id="audio1">
+		<source src="../sounds/Alarm3.mp3" type="audio/mpeg">
+	</audio>
+</body>
+</html>

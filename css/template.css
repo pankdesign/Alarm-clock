@@ -1,0 +1,133 @@
+ body { 
+ color: transparent; }
+ @font-face{
+ 	font-family: 'time';
+ 	src:url('../fonts/MonospaceTypewriter.ttf') format('truetype');
+ }
+ .drag {
+    -webkit-app-region: drag;
+ }
+ .no-drag {
+    -webkit-app-region: no-drag;
+ }
+ .dragbtn{
+ 	color: #333;
+ 	position: absolute;
+ 	left: 0px;
+ 	top: 0px;
+ 	z-index: 1000;
+ }
+ .dragbtn span{
+ 	width: 16px;
+ 	height: 16px;
+ 	display: inline-block;
+ 	padding: 2px;
+ }
+ .dragbtn .drag{ 	
+ 	background-image: url('../images/drag-icon.png');
+ 	background-repeat: no-repeat;
+ 	background-position: center;
+ }
+ .dragbtn #ontop{
+ 	background-image: url('../images/pin.png');
+ 	background-repeat: no-repeat;
+ 	background-position: center;
+ }
+ .clockbox{
+ 	background-color: #222;
+ 	text-align: center;
+ 	margin: 0px !important;
+ }
+.clockface{
+	margin: 0px auto 0px auto;
+	display: block;
+	font-family: time;
+	color: #fff;
+	font-size:40px;	
+}
+.clockface small{
+	color: #666;
+}
+.alarmbtn{
+ 	background-color: #5cb85c !important;
+ 	padding: 4px;
+ 	position: absolute;
+ 	right: 0px;
+ 	top: 0px;
+ 	color: #fff;
+ 	line-height: 1;
+ 	z-index: 10;
+ }
+#alarmbtnmain{
+ 	display: none;
+ 	padding: 36px;
+ 	
+ 	font-size: 20px;
+ }
+.row1{
+	background-color: #fc8834;
+	color: #fff;
+	height: 100px;
+	width: 300px;
+	position: fixed;
+	bottom: -100px;
+	z-index: 20;
+}
+.row1 a:hover{
+	color: #222;
+}
+.row1 #cancel{
+	padding-top: 4px;
+}
+.row1 #cancel:hover{
+	background-color: #eb7823;
+}
+.btnbox{
+	width: 30px;
+	float: left;
+	padding: 16px 0px;
+}
+.timepickerbox{
+	width: 138px;
+	float: left;
+	margin-left: 20px;
+	margin-right:20px;
+}
+.timepicker{
+	width: 100%;
+  	max-width: 100%;
+}
+.timepicker > tbody > tr > td{
+	padding: 4;
+	vertical-align: middle;
+	text-align: center;
+	width: 36px;
+}
+.timepicker > .sep{
+	width: 3px;
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
