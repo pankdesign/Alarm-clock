@@ -223,7 +223,7 @@ function loadClock(){               // function that loads the clocks and keep i
     s = checkTime(s);
     document.getElementById('hour').innerHTML = h;
     document.getElementById('min').innerHTML = m;
-    document.getElementById('sec').innerHTML = s;
+    //document.getElementById('sec').innerHTML = s;
     document.getElementById('key').innerHTML = k;
     var t = setTimeout(function(){loadClock()},500);
 }
@@ -234,11 +234,9 @@ function loadDate(){
     var da = day[today.getDay()];
     var d = today.getDate();
     var m = month[today.getMonth()];
-    var y = today.getFullYear();
     document.getElementById('day').innerHTML = da;
     document.getElementById('date').innerHTML = d;
     document.getElementById('month').innerHTML = m;
-    document.getElementById('year').innerHTML = y;
 }
 
 
@@ -255,26 +253,28 @@ $(document).ready( function() {
     
     // Main controls visible toggle
     $("body").on({
-        mouseover:function(){$(".ctrl").show();},  
-        mouseout:function(){$(".ctrl").hide();}  
+        mouseover:function(){$(".ctrl").show(); $('body').animate({backgroundColor:"#444444"});},  
+        mouseout:function(){$(".ctrl").hide(); $('body').animate({backgroundColor:"#000000"});}  
     });
 
     // Menu hover btn toggle
     $('#zoombtn').mouseenter(function() {     
         $('#clock').animate({width:'-=50'}, 'slow');
         $('.clockface').animate({fontSize:'30px', marginTop:'8px'}, 'slow');
-        $('.dateface').animate({fontSize:'6px'}, 'slow'); 
+       // $('.dateface').animate({fontSize:'6px'}, 'slow'); 
         $('#zoombtn').animate({width:'50px',height:'100px'},'slow'),
         $('#btn0').hide('slow');
         $('.extrabtn').show('slow');        
+        
     }),
     $('#zoombtn').mouseleave(function(){       
         $('#clock').delay(1000).animate({width:"+=50"}, 'slow');
         $('#zoombtn').delay(1000).animate({width:'26px',height:'26px'},'slow'),
         $('.clockface').delay(1000).animate({fontSize:"45px", marginTop:'0px'},'slow');
-        $('.dateface').delay(1000).animate({fontSize:"12px"}, 'slow');             
+        //$('.dateface').delay(1000).animate({fontSize:"12px"}, 'slow');             
         $('.extrabtn').delay(1000).hide('slow');
         $('#btn0').delay(1000).show('slow');
+        
     });
 
     // Create alarm btn function
