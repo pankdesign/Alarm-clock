@@ -1,5 +1,5 @@
 // GLOBAL SETTINGS FUNCTIONS
-var id;
+
 var settings = {
     alwaysOnTop: true,
     silent: false,
@@ -7,23 +7,7 @@ var settings = {
     alarms:false,
     alarmSound:'Alarm3.mp3'
 };
-function genId(){
-    chrome.storage.local.get("idCounter", function(result){
-        if(result.idCounter){
-            id = result.idCounter;
-        }
-        else{
-            id = 0;
-        }
-    });
-}
-function updateId(){
-    ++id;
-    chrome.storage.local.set({"idCounter":id}, function(){
-        genId();
-    });
-    return id;
-}
+
 function getTimeTon(time){  // in minutes
     var time_component = time.split(" ");
     var time_component1 = time_component[0].split(":");
@@ -135,24 +119,21 @@ function toggleAlarmsIcon(){
 
 // ALARM CLASS
 function Alarm(name,time,repeat){
-    this.id = updateId(),
     this.name = name,           // String
     this.time = time,           // String format "7:35 AM"
     this.repeat = repeat,       // binary
-    this.chromeName = this.name + this.id,
     this.n = getTimeTon(time),
     this.active = false
 }
 Alarm.prototype.activeToggle = function(){
     if(this.active){
-        chrome.alarms.clear(this.chromeName, function(){
+        chrome.alarms.clear(this.name, function(){
             this.acitve = false;
-            toggleAlarmsIcon();
+            toggleAlarmsIcon();//****************************
         });
     }
     else{
-        console.log(this.n);
-        chrome.alarms.create(this.chromeName, {delayInMinutes: this.n, periodInMinutes: 5});
+        chrome.alarms.create(this.name, {delayInMinutes: this.n, periodInMinutes: 5});
         this.acitve = true;
         settings.silent = false;
         settings.alarms = true;
@@ -168,14 +149,9 @@ Alarm.prototype.repeatToggle = function(){
     }
 }
 function saveAlarm(alarm){
-    alarm.activeToggle();
-    chrome.storage.local.get('alarms', function(result){   
-        var alarmlisttemp = result.alarms;
-        if(!alarmlisttemp){
-            alarmlisttemp = [];
-        }
-        alarmlisttemp.push(alarm);
-        chrome.storage.local.set({alarms:alarmlisttemp});
+    alarm.activeToggle();       
+    chrome.storage.local.clear('alarms',function(){
+        chrome.storage.local.set({alarms: alarm});
     });
 }
 function createAlarm(){
@@ -183,20 +159,16 @@ function createAlarm(){
     var alarm = new Alarm('Alarm',time,false);
     saveAlarm(alarm);
 }
-function deleteAlarm(chromename){
+function deleteAlarm(name){
     chrome.storage.local.get('alarms', function(result){        
-        var alarmlisttemp = result.alarms;
-        if(alarmlisttemp.length == 0){
+        var alarm = result.alarms;
+        if(!alarm){
             console.log("invalid Delete");
         }
         else{
-            for(var i = 0; i < alarmlisttemp.length; i++){
-                if(alarmlisttemp[i].chromeName == chromename){
-                    alarmlisttemp = alarmlisttemp.splice(i,1);
-                    break;
-                }
-            }
-            chrome.storage.local.set({alarms:alarmlisttemp});
+            chrome.storage.local.clear('alarms',function(){
+                console.log('Alarm deleted from memory');
+            });
             toggleAlarmsIcon();
         }                
     });
@@ -276,7 +248,6 @@ $(document).ready( function() {
     var mainwindow = chrome.app.window.get('main');
     loadSettings();
     mainwindow.resizeTo(300,100);
-    genId();
     loadClock(); 
     loadDate();
     chrome.alarms.onAlarm.addListener(ringAlarm);
