@@ -129,7 +129,7 @@ Alarm.prototype.activeToggle = function(){
     if(this.active){
         chrome.alarms.clear(this.name, function(){
             this.acitve = false;
-            toggleAlarmsIcon();//****************************
+            toggleAlarmsIcon();
         });
     }
     else{
@@ -150,7 +150,7 @@ Alarm.prototype.repeatToggle = function(){
 }
 function saveAlarm(alarm){
     alarm.activeToggle();       
-    chrome.storage.local.clear('alarms',function(){
+    chrome.storage.local.remove('alarms',function(){
         chrome.storage.local.set({alarms: alarm});
     });
 }
@@ -166,7 +166,7 @@ function deleteAlarm(name){
             console.log("invalid Delete");
         }
         else{
-            chrome.storage.local.clear('alarms',function(){
+            chrome.storage.local.remove('alarms',function(){
                 console.log('Alarm deleted from memory');
             });
             toggleAlarmsIcon();
@@ -371,11 +371,6 @@ $(document).ready( function() {
     $('.close1').click(function(){
         $('.overlay').animate({bottom:'-100px'});
     });
-
-    // Always on top Control
-    /*$('#ontop').click(function(){
-        toggleAlwaysOnTop();
-    });*/
 
     // Toggle silent
     $('#alarmIcon').click(function(){
