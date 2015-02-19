@@ -43,7 +43,7 @@ function getTimeTon(time){  // in minutes
     var h=date.getHours();
     var m=date.getMinutes();
     var s=date.getSeconds();
-    m = checkTime(m);
+    m = checkTime(m); 
     s = checkTime(s);
 
     var aTimeDate  = String(y)+'-'+mm+'-'+d+' '+aTimeUser+'.000';
