@@ -252,29 +252,31 @@ $(document).ready( function() {
 //    mainwindow.onClosed.addListener();
     
     // Main controls visible toggle
-    $("body").on({
-        mouseover:function(){$(".ctrl").show(); $('body').animate({backgroundColor:"#444444"});},  
-        mouseout:function(){$(".ctrl").hide(); $('body').animate({backgroundColor:"#000000"});}  
+    $(document.body).on({
+        mouseover:function(){
+            $(".ctrl").show(); 
+            $(document.body).css('background-color', '#141414');
+        },  
+        mouseout:function(){
+            $(".ctrl").hide(); 
+            $(document.body).css('background-color', '#000000');
+        }  
     });
 
     // Menu hover btn toggle
-    $('#zoombtn').mouseenter(function() {     
+    $('#zoombtn').mouseenter(function(){     
         $('#clock').animate({width:'-=50'}, 'slow');
         $('.clockface').animate({fontSize:'30px', marginTop:'8px'}, 'slow');
-       // $('.dateface').animate({fontSize:'6px'}, 'slow'); 
         $('#zoombtn').animate({width:'50px',height:'100px'},'slow'),
         $('#btn0').hide('slow');
         $('.extrabtn').show('slow');        
-        
     }),
     $('#zoombtn').mouseleave(function(){       
         $('#clock').delay(1000).animate({width:"+=50"}, 'slow');
         $('#zoombtn').delay(1000).animate({width:'26px',height:'26px'},'slow'),
         $('.clockface').delay(1000).animate({fontSize:"45px", marginTop:'0px'},'slow');
-        //$('.dateface').delay(1000).animate({fontSize:"12px"}, 'slow');             
         $('.extrabtn').delay(1000).hide('slow');
         $('#btn0').delay(1000).show('slow');
-        
     });
 
     // Create alarm btn function
@@ -285,7 +287,6 @@ $(document).ready( function() {
     // Time picker control   
     $('.btn-pic').click(function(){
         var key = $(this).attr('id');
-
         var h = parseInt($('#hv').html());
         var m = parseInt($('#mv').html());
         var k = $('#kv').html();
